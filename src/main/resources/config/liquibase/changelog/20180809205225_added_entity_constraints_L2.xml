@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity L2.
+    -->
+    <changeSet id="20180809205225-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="l1_id"
+                                 baseTableName="l_2"
+                                 constraintName="fk_l2_l1_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="l_1"/>
+
+    </changeSet>
+</databaseChangeLog>

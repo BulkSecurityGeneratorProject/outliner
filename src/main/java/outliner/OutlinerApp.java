@@ -2,7 +2,7 @@ package outliner;
 
 import outliner.config.ApplicationProperties;
 import outliner.config.DefaultProfileUtil;
-
+import outliner.persistence.CustomRepositoryImpl;
 import io.github.jhipster.config.JHipsterConstants;
 
 import org.slf4j.Logger;
@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.core.env.Environment;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.annotation.PostConstruct;
 import java.net.InetAddress;
@@ -19,6 +20,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @SpringBootApplication
+@EnableJpaRepositories(repositoryBaseClass = CustomRepositoryImpl.class)
 @EnableConfigurationProperties({LiquibaseProperties.class, ApplicationProperties.class})
 public class OutlinerApp {
 

@@ -38,6 +38,17 @@ public class CacheConfiguration {
             cm.createCache(outliner.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(outliner.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(outliner.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(outliner.domain.L1.class.getName(), jcacheConfiguration);
+            cm.createCache(outliner.domain.L1.class.getName() + ".l2S", jcacheConfiguration);
+            cm.createCache(outliner.domain.L2.class.getName(), jcacheConfiguration);
+            cm.createCache(outliner.domain.L2.class.getName() + ".l3S", jcacheConfiguration);
+            cm.createCache(outliner.domain.L3.class.getName(), jcacheConfiguration);
+            cm.createCache(outliner.domain.L3.class.getName() + ".tables", jcacheConfiguration);
+            cm.createCache(outliner.domain.L3Table.class.getName(), jcacheConfiguration);
+            cm.createCache(outliner.domain.L3Table.class.getName() + ".rows", jcacheConfiguration);
+            cm.createCache(outliner.domain.L3Row.class.getName(), jcacheConfiguration);
+            cm.createCache(outliner.domain.L3Row.class.getName() + ".cells", jcacheConfiguration);
+            cm.createCache(outliner.domain.L3Cell.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }
