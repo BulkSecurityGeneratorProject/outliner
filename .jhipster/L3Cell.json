@@ -1,0 +1,37 @@
+{
+    "name": "L3Cell",
+    "fields": [
+        {
+            "fieldName": "classification",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "position",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "value",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "row",
+            "otherEntityName": "l3Row",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180809205229",
+    "entityTableName": "l_3_cell",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

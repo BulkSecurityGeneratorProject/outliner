@@ -1,0 +1,40 @@
+{
+    "name": "L3Table",
+    "fields": [
+        {
+            "fieldName": "classification",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "position",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "flag",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "rows",
+            "otherEntityName": "l3Row",
+            "otherEntityRelationshipName": "table"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "l3",
+            "otherEntityName": "l3",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180809205227",
+    "entityTableName": "l_3_table",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

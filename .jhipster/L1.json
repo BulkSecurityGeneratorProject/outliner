@@ -1,0 +1,43 @@
+{
+    "name": "L1",
+    "fields": [
+        {
+            "fieldName": "classification",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "position",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "l2",
+            "otherEntityName": "l2",
+            "otherEntityRelationshipName": "l1"
+        }
+    ],
+    "changelogDate": "20180809205224",
+    "entityTableName": "l_1",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

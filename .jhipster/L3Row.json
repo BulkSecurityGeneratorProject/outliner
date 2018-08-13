@@ -1,0 +1,50 @@
+{
+    "name": "L3Row",
+    "fields": [
+        {
+            "fieldName": "classification",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "datetime",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "position",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "cells",
+            "otherEntityName": "l3Cell",
+            "otherEntityRelationshipName": "row"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "table",
+            "otherEntityName": "l3Table",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180809205228",
+    "entityTableName": "l_3_row",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

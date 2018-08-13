@@ -1,0 +1,57 @@
+{
+    "name": "L3",
+    "fields": [
+        {
+            "fieldName": "classification",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "position",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "content",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "tables",
+            "otherEntityName": "l3Table",
+            "otherEntityRelationshipName": "l3"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "l2",
+            "otherEntityName": "l2",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180809205226",
+    "entityTableName": "l_3",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
