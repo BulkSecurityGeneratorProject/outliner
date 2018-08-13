@@ -10,14 +10,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.stereotype.Repository;
 
+import outliner.advanced.core.data.OutlinerRepository;
 import outliner.domain.User;
-import outliner.persistence.CustomRepository;
 
 /**
  * Spring Data JPA repository for the User entity.
  */
 @Repository
-public interface UserRepository extends CustomRepository<User, Long> {
+public interface UserRepository extends OutlinerRepository<User, Long> {
 
     String USERS_BY_LOGIN_CACHE = "usersByLogin";
 

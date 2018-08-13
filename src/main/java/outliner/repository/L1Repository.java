@@ -1,7 +1,8 @@
 package outliner.repository;
 
+
+import outliner.advanced.core.data.OutlinerRepository;
 import outliner.domain.L1;
-import outliner.persistence.CustomRepository;
 
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
@@ -12,6 +13,6 @@ import org.springframework.stereotype.Repository;
  */
 @SuppressWarnings("unused")
 @Repository
-public interface L1Repository extends CustomRepository<L1, Long> {
+public interface L1Repository extends OutlinerRepository<L1, Long> {
 
 }

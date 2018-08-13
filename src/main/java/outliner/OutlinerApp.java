@@ -1,8 +1,8 @@
 package outliner;
 
+import outliner.advanced.core.data.OutlinerRepositoryFactoryBean;
 import outliner.config.ApplicationProperties;
 import outliner.config.DefaultProfileUtil;
-import outliner.persistence.CustomRepositoryImpl;
 import io.github.jhipster.config.JHipsterConstants;
 
 import org.slf4j.Logger;
@@ -20,68 +20,70 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @SpringBootApplication
-@EnableJpaRepositories(repositoryBaseClass = CustomRepositoryImpl.class)
-@EnableConfigurationProperties({LiquibaseProperties.class, ApplicationProperties.class})
+//@EnableJpaRepositories(entityManagerFactoryRef = "outlinerEntityManagerFactory", transactionManagerRef = "outlinerTransactionManager", basePackages = {
+//		"outliner.advanced.core.data" }, repositoryFactoryBeanClass = OutlinerRepositoryFactoryBean.class)
+@EnableJpaRepositories(basePackages = {
+		"outliner.advanced.core.data" }, repositoryFactoryBeanClass = OutlinerRepositoryFactoryBean.class)
+@EnableConfigurationProperties({ LiquibaseProperties.class, ApplicationProperties.class })
 public class OutlinerApp {
 
-    private static final Logger log = LoggerFactory.getLogger(OutlinerApp.class);
+	private static final Logger log = LoggerFactory.getLogger(OutlinerApp.class);
 
-    private final Environment env;
+	private final Environment env;
 
-    public OutlinerApp(Environment env) {
-        this.env = env;
-    }
+	public OutlinerApp(Environment env) {
+		this.env = env;
+	}
 
-    /**
-     * Initializes outliner.
-     * <p>
-     * Spring profiles can be configured with a program arguments --spring.profiles.active=your-active-profile
-     * <p>
-     * You can find more information on how profiles work with JHipster on <a href="https://www.jhipster.tech/profiles/">https://www.jhipster.tech/profiles/</a>.
-     */
-    @PostConstruct
-    public void initApplication() {
-        Collection<String> activeProfiles = Arrays.asList(env.getActiveProfiles());
-        if (activeProfiles.contains(JHipsterConstants.SPRING_PROFILE_DEVELOPMENT) && activeProfiles.contains(JHipsterConstants.SPRING_PROFILE_PRODUCTION)) {
-            log.error("You have misconfigured your application! It should not run " +
-                "with both the 'dev' and 'prod' profiles at the same time.");
-        }
-        if (activeProfiles.contains(JHipsterConstants.SPRING_PROFILE_DEVELOPMENT) && activeProfiles.contains(JHipsterConstants.SPRING_PROFILE_CLOUD)) {
-            log.error("You have misconfigured your application! It should not " +
-                "run with both the 'dev' and 'cloud' profiles at the same time.");
-        }
-    }
+	/**
+	 * Initializes outliner.
+	 * <p>
+	 * Spring profiles can be configured with a program arguments
+	 * --spring.profiles.active=your-active-profile
+	 * <p>
+	 * You can find more information on how profiles work with JHipster on <a href=
+	 * "https://www.jhipster.tech/profiles/">https://www.jhipster.tech/profiles/</a>.
+	 */
+	@PostConstruct
+	public void initApplication() {
+		Collection<String> activeProfiles = Arrays.asList(env.getActiveProfiles());
+		if (activeProfiles.contains(JHipsterConstants.SPRING_PROFILE_DEVELOPMENT)
+				&& activeProfiles.contains(JHipsterConstants.SPRING_PROFILE_PRODUCTION)) {
+			log.error("You have misconfigured your application! It should not run "
+					+ "with both the 'dev' and 'prod' profiles at the same time.");
+		}
+		if (activeProfiles.contains(JHipsterConstants.SPRING_PROFILE_DEVELOPMENT)
+				&& activeProfiles.contains(JHipsterConstants.SPRING_PROFILE_CLOUD)) {
+			log.error("You have misconfigured your application! It should not "
+					+ "run with both the 'dev' and 'cloud' profiles at the same time.");
+		}
+	}
 
-    /**
-     * Main method, used to run the application.
-     *
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(OutlinerApp.class);
-        DefaultProfileUtil.addDefaultProfile(app);
-        Environment env = app.run(args).getEnvironment();
-        String protocol = "http";
-        if (env.getProperty("server.ssl.key-store") != null) {
-            protocol = "https";
-        }
-        String hostAddress = "localhost";
-        try {
-            hostAddress = InetAddress.getLocalHost().getHostAddress();
-        } catch (Exception e) {
-            log.warn("The host name could not be determined, using `localhost` as fallback");
-        }
-        log.info("\n----------------------------------------------------------\n\t" +
-                "Application '{}' is running! Access URLs:\n\t" +
-                "Local: \t\t{}://localhost:{}\n\t" +
-                "External: \t{}://{}:{}\n\t" +
-                "Profile(s): \t{}\n----------------------------------------------------------",
-            env.getProperty("spring.application.name"),
-            protocol,
-            env.getProperty("server.port"),
-            protocol,
-            hostAddress,
-            env.getProperty("server.port"),
-            env.getActiveProfiles());
-    }
+	/**
+	 * Main method, used to run the application.
+	 *
+	 * @param args the command line arguments
+	 */
+	public static void main(String[] args) {
+		SpringApplication app = new SpringApplication(OutlinerApp.class);
+		DefaultProfileUtil.addDefaultProfile(app);
+		Environment env = app.run(args).getEnvironment();
+		String protocol = "http";
+		if (env.getProperty("server.ssl.key-store") != null) {
+			protocol = "https";
+		}
+		String hostAddress = "localhost";
+		try {
+			hostAddress = InetAddress.getLocalHost().getHostAddress();
+		} catch (Exception e) {
+			log.warn("The host name could not be determined, using `localhost` as fallback");
+		}
+		log.info(
+				"\n----------------------------------------------------------\n\t"
+						+ "Application '{}' is running! Access URLs:\n\t" + "Local: \t\t{}://localhost:{}\n\t"
+						+ "External: \t{}://{}:{}\n\t"
+						+ "Profile(s): \t{}\n----------------------------------------------------------",
+				env.getProperty("spring.application.name"), protocol, env.getProperty("server.port"), protocol,
+				hostAddress, env.getProperty("server.port"), env.getActiveProfiles());
+	}
 }

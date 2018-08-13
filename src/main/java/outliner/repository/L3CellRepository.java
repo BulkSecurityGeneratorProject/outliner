@@ -2,8 +2,8 @@ package outliner.repository;
 
 import org.springframework.stereotype.Repository;
 
+import outliner.advanced.core.data.OutlinerRepository;
 import outliner.domain.L3Cell;
-import outliner.persistence.CustomRepository;
 
 
 /**
@@ -11,6 +11,6 @@ import outliner.persistence.CustomRepository;
  */
 
 @Repository
-public interface L3CellRepository extends CustomRepository<L3Cell, Long> {
+public interface L3CellRepository extends OutlinerRepository<L3Cell, Long> {
 
 }
