@@ -1,9 +1,10 @@
 package outliner;
 
-import outliner.advanced.core.data.OutlinerRepositoryFactoryBean;
-import outliner.config.ApplicationProperties;
-import outliner.config.DefaultProfileUtil;
-import io.github.jhipster.config.JHipsterConstants;
+import java.net.InetAddress;
+import java.util.Arrays;
+import java.util.Collection;
+
+import javax.annotation.PostConstruct;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,16 +15,15 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import javax.annotation.PostConstruct;
-import java.net.InetAddress;
-import java.util.Arrays;
-import java.util.Collection;
+import io.github.jhipster.config.JHipsterConstants;
+import outliner.advanced.core.data.OutlinerRepositoryFactoryBean;
+import outliner.config.ApplicationProperties;
+import outliner.config.DefaultProfileUtil;
 
 @SpringBootApplication
 //@EnableJpaRepositories(entityManagerFactoryRef = "outlinerEntityManagerFactory", transactionManagerRef = "outlinerTransactionManager", basePackages = {
 //		"outliner.advanced.core.data" }, repositoryFactoryBeanClass = OutlinerRepositoryFactoryBean.class)
-@EnableJpaRepositories(basePackages = {
-		"outliner.advanced.core.data" }, repositoryFactoryBeanClass = OutlinerRepositoryFactoryBean.class)
+@EnableJpaRepositories(basePackages = {"outliner.advanced.core.data"}, repositoryFactoryBeanClass = OutlinerRepositoryFactoryBean.class)
 @EnableConfigurationProperties({ LiquibaseProperties.class, ApplicationProperties.class })
 public class OutlinerApp {
 

@@ -62,7 +62,7 @@ public class L3TableResource {
         if (l3Table.getId() != null) {
             throw new BadRequestAlertException("A new l3Table cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        L3Table result = l3TableRepository.saveFlushAndRefresh(l3Table);
+        L3Table result = l3TableRepository.saveAndFlush(l3Table);
         //EntityManager flush should be called here
         l3TableSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/l-3-tables/" + result.getId()))
@@ -86,7 +86,7 @@ public class L3TableResource {
         if (l3Table.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        L3Table result = l3TableRepository.saveFlushAndRefresh(l3Table);
+        L3Table result = l3TableRepository.saveAndFlush(l3Table);
         //EntityManager flush should be called here
         l3TableSearchRepository.save(result);
         return ResponseEntity.ok()

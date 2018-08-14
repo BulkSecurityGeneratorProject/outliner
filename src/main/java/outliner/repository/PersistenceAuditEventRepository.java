@@ -5,14 +5,14 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import outliner.advanced.core.data.OutlinerRepository;
 import outliner.domain.PersistentAuditEvent;
 
 /**
  * Spring Data JPA repository for the PersistentAuditEvent entity.
  */
-public interface PersistenceAuditEventRepository extends OutlinerRepository<PersistentAuditEvent, Long> {
+public interface PersistenceAuditEventRepository extends JpaRepository<PersistentAuditEvent, Long> {
 
     List<PersistentAuditEvent> findByPrincipal(String principal);
 

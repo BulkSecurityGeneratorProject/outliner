@@ -69,7 +69,7 @@ public class L1Resource {
         if (l1.getId() != null) {
             throw new BadRequestAlertException("A new l1 cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        L1 result = l1Repository.saveFlushAndRefresh(l1);
+        L1 result = l1Repository.saveAndFlush(l1);
         //EntityManager flush should be called here
         l1SearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/l-1-s/" + result.getId()))
@@ -93,7 +93,7 @@ public class L1Resource {
         if (l1.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        L1 result = l1Repository.saveFlushAndRefresh(l1);
+        L1 result = l1Repository.saveAndFlush(l1);
         l1SearchRepository.save(result);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, l1.getId().toString()))

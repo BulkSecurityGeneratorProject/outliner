@@ -68,7 +68,7 @@ public class L3Resource {
         if (l3.getId() != null) {
             throw new BadRequestAlertException("A new l3 cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        L3 result = l3Repository.saveFlushAndRefresh(l3);
+        L3 result = l3Repository.saveAndFlush(l3);
         //EntityManager flush should be called here
         l3SearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/l-3-s/" + result.getId()))
@@ -92,7 +92,7 @@ public class L3Resource {
         if (l3.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        L3 result = l3Repository.saveFlushAndRefresh(l3);
+        L3 result = l3Repository.saveAndFlush(l3);
         //EntityManager flush should be called here
         l3SearchRepository.save(result);
         return ResponseEntity.ok()
