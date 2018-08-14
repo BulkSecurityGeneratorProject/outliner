@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import java.sql.SQLException;
 
 @Configuration
-@EnableJpaRepositories("outliner.repository")
+@EnableJpaRepositories("outliner.repository.search")
 @EnableJpaAuditing(auditorAwareRef = "springSecurityAuditorAware")
 @EnableTransactionManagement
 @EnableElasticsearchRepositories("outliner.repository.search")
